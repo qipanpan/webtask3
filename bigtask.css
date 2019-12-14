@@ -1,0 +1,110 @@
+
+* {
+    padding: 0;
+    margin: 0;
+}
+ul,li{
+	list-style: none;
+}
+.out{
+	width: 1360px;
+	height: 470px;
+	border-left: 2px solid black;
+	border-right: 2px solid black;
+	margin: 100px auto;
+}
+.gray{
+	background: #ccc;
+	width: 1360px;
+	height: 20px;
+}
+.pan{
+	width: 1200px;
+	height: 20px;
+	margin:0 auto;
+}
+.last{
+	position:relative;
+	width: 1050px;
+	height: 20px;
+	overflow: hidden;
+	display: inline-block;
+}
+.opp{
+	width:360px;
+	height:20px;
+	display: inline-block;
+	position:absolute;
+	left: 1000px;
+	margin-top:2.5px;
+	font-size:10px;
+	color:red;
+}
+.blo{
+	display: inline-block;
+	margin-left: 70px;
+}
+
+.box{
+	width: 1200px;
+	height:400px ;
+	margin: 0 auto;
+	margin-top: 20px;
+	position:relative ;
+	overflow:hidden ;
+}
+.slider{
+	width: 8400px;
+	position: absolute;
+	left: -1200px;
+}
+.slide{
+	width: 1200px;
+	height: 400px;
+	float: left;
+	overflow: hidden;
+}
+#left{
+	left: 30px;
+}
+.box>span{
+	display: block;
+	width: 30px;
+	height: 50px;
+	text-align: center;
+	cursor: pointer;
+	color:rgb(255,255,255);
+	top: 130px;
+	line-height: 50px;
+	background:rgb(255,0,0) ;
+	position: absolute;
+	font-size: 30px;
+	opacity: 0;
+}
+#right{
+	right: 30px;
+}
+.native{
+	position: absolute;
+	left: 470px;
+	bottom: 20px;
+}
+.native>li{
+	float: left;
+	width: 20px;
+	height:20px ;
+	background:#ccc ;
+	margin:0 10px ;
+	border-radius: 50%;
+	cursor: pointer;
+	font-size: 13px;
+	text-align: center;
+
+}
+.native>p{
+	position: absolute;
+	margin: auto auto;
+}
+.native .active{
+	background: red;
+}

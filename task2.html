@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/bigtask.css">
+	<script src="demo.js"></script>
+</head>
+<body>
+	<div class="out">
+		<div class="gray">
+			<div class="pan">
+				<div class="blo"><img src="imgbig/a15.png"></div>
+				<div class="last">
+					<div id="scroll" class="opp"><p>[温馨提示]最近有不少不法分子在网上骗人，请大家注意！！！</p></div>
+				</div>
+			<div>
+		</div>
+		<div class="box" id="box">
+		<div class="slider" id="slider">
+			<div class="slide"><img src="imgbig/b5.png"></div>
+			<div class="slide"><img src="imgbig/b1.png"></div>
+			<div class="slide"><img src="imgbig/b2.png"></div>
+			<div class="slide"><img src="imgbig/b3.png"></div>
+			<div class="slide"><img src="imgbig/b4.png"></div>
+			<div class="slide"><img src="imgbig/b5.png"></div>
+			<div class="slide"><img src="imgbig/b1.png"></div>
+		</div>
+		<span id="left"><</span>
+		<span id="right">></span>
+		<ul class="native" id="native">
+			<li class="active"><p>1</p></li>
+			<li><p>2</p></li>
+			<li><p>3</p></li>
+			<li><p>4</p></li>
+			<li><p>5</p></li>
+		</ul>
+		</div>
+	</div>
+		
+
+</body>
+	<script>
+		var box=document.getElementById("box");
+		var nativelist=document.getElementById("native").children;
+		var slider=document.getElementById("slider");
+		var left=document.getElementById("left");
+		var right=document.getElementById("right");
+		var opp=document.getElementById("scroll");
+		var i=1,k=-60;
+		var timer,timep;
+		var moving=false;
+		timer=setInterval(function(){
+			if(moving){
+					return;
+				}
+			moving=true;
+			i++;
+			change();
+			animate(slider,{left:-1200*i},function(){
+				if(i==6){
+					slider.style.left="-1200px";
+					i=1;
+				}
+				moving=false;
+			});
+		},2000)
+		box.onmouseover=function(){
+			animate(left,{opacity:50});
+			animate(right,{opacity:50});
+			clearInterval(timer);
+		}
+		box.onmouseout=function(){
+			animate(left,{opacity:0});
+			animate(right,{opacity:0});
+			timer=setInterval(function(){
+				if(moving){
+					return;
+				}
+				moving=true;
+				i++;
+				change();
+				animate(slider,{left:-1200*i},function(){
+					if(i==6){
+						slider.style.left="-1200px";
+						i=1;
+					}
+					moving=false;
+				});
+			},2000);
+		}
+		left.onclick=function(){
+			if(moving){
+					return;
+			}
+			moving=true;
+			i--;
+			change();
+			animate(slider,{left:-1200*i},function(){
+				if(i==0){
+					slider.style.left="-6000px";
+					i=5;
+				}
+				moving=false;
+			});
+		};
+		right.onclick=function(){
+			if(moving){
+					return;
+			}
+			moving=true;
+			i++;
+			change();
+			animate(slider,{left:-1200*i},function(){
+				if(i==6){
+					slider.style.left="-1200px";
+					i=1;
+				}
+				moving=false;
+			});
+		};
+		for(var j=0;j<nativelist.length;j++){
+			nativelist[j].idx=j;
+			nativelist[j].onclick=function(){
+				i=this.idx+1;
+				change();
+				animate(slider,{left:-1200*i})
+			}
+		}
+		function change(){
+			for(var j=0;j<nativelist.length;j++){
+				nativelist[j].className=" ";
+			}
+			if(i==6){
+				nativelist[0].className="active";
+			}
+			else if(i==0){
+				nativelist[4].className="active";
+			}
+			else{
+				nativelist[i-1].className="active";
+			}
+
+		}
+		window.onload=function(){
+			setInterval(function(){
+
+				var now = getStyle(opp,"left");
+				opp.style.left = parseInt(now) - 1 + "px";
+				if(getStyle(opp,"left")=="-360px"){
+					opp.style.left=1000+"px";
+				}
+				
+			},20)
+		}
+	</script>
+</html>
